@@ -1,0 +1,87 @@
+<section class="page">
+  <a class="back-link" routerLink="/books">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M15.5 4.5 8 12l7.5 7.5-1.4 1.4L5.2 12l8.9-8.9z" />
+    </svg>
+    Zurück zur Liste
+  </a>
+
+  @if (bookResource.isLoading()) {
+    <div class="notice" aria-busy="true">Buch wird geladen …</div>
+  } @else if (bookResource.hasValue()) {
+    @let book = bookResource.value();
+    <article class="card book-detail">
+      <div class="book-detail__cover-wrap">
+        @if (book.coverUrl) {
+          <img
+            class="book-detail__cover"
+            [src]="book.coverUrl"
+            [alt]="'Cover von ' + book.title"
+            width="192"
+            height="288"
+            decoding="async"
+          />
+        } @else {
+          <div class="book-detail__cover book-detail__cover--placeholder" aria-hidden="true">
+            Kein Cover
+          </div>
+        }
+      </div>
+
+      <div class="book-detail__body">
+        <span class="eyebrow">Buch</span>
+        <h1 class="book-detail__title">{{ book.title }}</h1>
+
+        <dl class="book-detail__fields">
+          <div class="book-detail__field">
+            <dt class="book-detail__label">ISBN</dt>
+            <dd class="book-detail__value mono">{{ book.isbn }}</dd>
+          </div>
+
+          <div class="book-detail__field">
+            <dt class="book-detail__label">Preis</dt>
+            <dd class="book-detail__value book-detail__price">
+              {{ book.price | currency }}
+              @if (isDiscounted(book)) {
+                <span class="badge badge--success">Angebot</span>
+              }
+            </dd>
+          </div>
+
+          <div class="book-detail__field">
+            <dt class="book-detail__label">Bewertung</dt>
+            <dd class="book-detail__value">
+              <books-rating [stars]="book.stars" [readonly]="true" />
+            </dd>
+          </div>
+
+          <div class="book-detail__field book-detail__field--full">
+            <dt class="book-detail__label">Kommentar</dt>
+            <dd class="book-detail__value">
+              @if (book.comment) {
+                {{ book.comment }}
+              } @else {
+                <span class="muted">Kein Kommentar vorhanden.</span>
+              }
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </article>
+  } @else if (notFound()) {
+    <div class="card card--padded book-detail--empty">
+      <h1 class="page__title">Buch nicht gefunden</h1>
+      <p class="muted">
+        Zur ISBN <span class="mono">{{ isbn() }}</span> ist kein Buch hinterlegt.
+      </p>
+      <a class="btn" routerLink="/books">Zur Buchliste</a>
+    </div>
+  } @else {
+    <div class="notice notice--error" role="alert">
+      Das Buch konnte nicht geladen werden. {{ loadErrorMessage() }}
+      <button type="button" class="btn btn--ghost" (click)="bookResource.reload()">
+        Erneut versuchen
+      </button>
+    </div>
+  }
+</section>

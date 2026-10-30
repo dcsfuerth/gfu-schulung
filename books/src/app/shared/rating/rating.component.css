@@ -1,0 +1,57 @@
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rating__stars {
+  display: inline-flex;
+  gap: 0.0625rem;
+}
+
+.rating__star {
+  position: relative;
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--color-border-strong);
+}
+
+.rating__star-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  color: var(--color-star);
+}
+
+.rating__star-icon {
+  display: block;
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: currentColor;
+}
+
+.rating__value {
+  min-width: 1.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.rating__actions {
+  display: inline-flex;
+  gap: 0.25rem;
+}
+
+.rating__btn--up:not(:disabled):hover {
+  border-color: var(--color-success);
+  background: var(--color-success-soft);
+  color: var(--color-success);
+}
+
+.rating__btn--down:not(:disabled):hover {
+  border-color: var(--color-danger);
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
+}

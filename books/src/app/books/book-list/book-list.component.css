@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.toolbar__search {
+  flex: 1 1 16rem;
+  max-width: 24rem;
+}
+
+.toolbar__hint {
+  font-size: 0.875rem;
+}
+
+.notice[role='alert'] {
+  margin: 1rem 1.25rem 0;
+}
+
+.table-wrap {
+  position: relative;
+  overflow-x: auto;
+}
+
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.book-table th {
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.book-table td {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.book-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.book-table tbody tr:hover {
+  background: var(--color-surface-muted);
+}
+
+.book-table__cover-col {
+  width: 4rem;
+}
+
+.book-table__cover {
+  display: block;
+  width: 40px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-muted);
+}
+
+.book-table__cover--placeholder {
+  border: 1px dashed var(--color-border-strong);
+}
+
+.book-table__title a {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.book-table__title a:hover {
+  color: var(--color-accent);
+}
+
+.book-table__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.book-table__actions {
+  text-align: right;
+}
+
+.book-table__empty {
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.price {
+  font-weight: 500;
+}
+
+.price--discount {
+  color: var(--color-success);
+}

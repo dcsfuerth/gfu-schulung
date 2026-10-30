@@ -1,0 +1,45 @@
+<div class="rating">
+  <span class="rating__stars" role="img" [attr.aria-label]="label()">
+    @for (fill of starFills(); track $index) {
+      <span class="rating__star" aria-hidden="true">
+        <svg class="rating__star-icon" viewBox="0 0 24 24" focusable="false">
+          <path [attr.d]="starPath" />
+        </svg>
+        <span class="rating__star-fill" [style.width.%]="fill">
+          <svg class="rating__star-icon" viewBox="0 0 24 24" focusable="false">
+            <path [attr.d]="starPath" />
+          </svg>
+        </span>
+      </span>
+    }
+  </span>
+
+  <span class="rating__value mono">{{ stars() }}</span>
+
+  @if (!readonly()) {
+    <span class="rating__actions">
+      <button
+        type="button"
+        class="btn btn--icon rating__btn rating__btn--down"
+        aria-label="Bewertung verringern"
+        [disabled]="!canDecrease()"
+        (click)="decrease()"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M5 11h14v2H5z" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="btn btn--icon rating__btn rating__btn--up"
+        aria-label="Bewertung erhöhen"
+        [disabled]="!canIncrease()"
+        (click)="increase()"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6z" />
+        </svg>
+      </button>
+    </span>
+  }
+</div>
