@@ -15,7 +15,7 @@ Die Anwendung ist über http://localhost:4200/ erreichbar.
 
 
 ## Unittests
-npm run test
+```npm run test```
 
 ## E2E-Tests mit BDD
 
@@ -24,6 +24,6 @@ oder
 ```npm run e2e:ui```
 
 ## Dokumentation erzeugen (in./docs):
-npm run docs
+```npm run docs```
 
 
