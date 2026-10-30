@@ -13,9 +13,9 @@
     "e2e:ui": "bddgen && playwright test --ui",
     "e2e:gen": "bddgen",
     "e2e:report": "playwright show-report",
-    "db:mock": "json-server ./src/data/db.json -w -d 100 -i isbn",
+    "db:mock": "npm install json-server@0.17.4 &&  json-server ./src/data/db.json -w -d 100 -i isbn",
     "analyze": "ng build -c production --stats-json && esbuild-visualizer --metadata dist/books/browser-stats.json --filename dist/bundle-report.html --open",
-    "docs": "compodoc -p tsconfig.doc.json -d documentation",
+    "docs": "npm install @compodoc/compodoc && compodoc -p tsconfig.doc.json -d documentation",
     "docs:serve": "compodoc -p tsconfig.doc.json -d documentation -s"
   },
   "private": true,
